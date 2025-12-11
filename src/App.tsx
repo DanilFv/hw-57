@@ -3,8 +3,9 @@ import type {IUser} from './types';
 import FormUser from './components/FormUser/FormUser.tsx';
 import {useState} from 'react';
 import {toast, ToastContainer} from 'react-toastify';
-import Users from './User/Users.tsx';
-import UserItem from './User/UserItem/UserItem.tsx';
+import Users from './components/User/Users.tsx';
+import UserItem from './components/User/UserItem/UserItem.tsx';
+
 
 const App = () => {
     const [users, setUsers] = useState<IUser[]>([]);
