@@ -2,6 +2,7 @@ import {roles} from '../../globalConstants.ts';
 import * as React from 'react';
 import {useState} from 'react';
 import type {IUser} from '../../types';
+import {toast} from 'react-toastify';
 
 interface Props {
     addUserData:(userData: IUser) => void;
@@ -36,7 +37,13 @@ const FormUser: React.FC<Props> = ({addUserData}) => {
 
     const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+        if (form.name.trim().length === 0 || form.email.trim().length === 0) {
+            toast.error('Пожалуйста введите верную почту или имя!');
+        }
+
         addUserData({...form});
+        setForm({name:'', email: '', active: false, role: 'user'});
     }
 
     return (
